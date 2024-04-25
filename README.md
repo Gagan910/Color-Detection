@@ -1,4 +1,4 @@
-# Python_Project
+# Python_Project_color-detection
 Three different colors Red, Green and  Blue are being tracked by utilizing the fundamentals of computer vision. After successful compilation when  we execute the code a window redirect to the image displayed on it whose path is given as an argument. Additionally, we obtain the color name of the pixel along with the composition of three different colors  red, blue and green values. 
 
 ### METHODOLOGY 
