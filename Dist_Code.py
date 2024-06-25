@@ -1,20 +1,21 @@
 import cv2
 import pandas as pd
 import streamlit as st
-import numpy as np
 
-img_path = r's:\Projects\Color-detection-main\Color-detection-main\colour.jpg'
+img_path = 'S:\Projects\Color-detection-main\Color-detection-main\colour.jpg'
+
 img = cv2.imread(img_path)
 
 if img is None:
     st.error(f"Failed to load image from path: {img_path}")
     st.stop()
 
-img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+img_rgb = cv2.cvtColor(img ,cv2.COLOR_BGR2RGB)
 
-index = ["color", "color_name", "hex", "R", "G", "B"]
 csv_path = r's:\Projects\Color-detection-main\Color-detection-main\colors.csv'
+
 try:
+    index = ["color", "color_name", "hex", "R", "G", "B"]
     csv = pd.read_csv(csv_path, names=index, header=None)
 except FileNotFoundError:
     st.error(f"CSV file not found at path: {csv_path}")
@@ -50,5 +51,4 @@ if st.button("Detect Color"):
 
     if r + g + b >= 600:
         cv2.putText(img_copy, text, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 0), 2, cv2.LINE_AA)
-
     st.image(img_copy, caption="Image with detected color", use_column_width=True)
